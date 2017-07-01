@@ -27,7 +27,7 @@ class CartedProductsController < ApplicationController
       latest_quantity = params[:quantities][i].to_i
       carted_product = CartedProduct.find(params[:carted_product_ids][i].to_i)
       if latest_quantity.zero?
-        carted_product.update(status: "removed")
+        carted_product.update(status: "removed", order_id: 0)
       elsif latest_quantity != carted_product.quantity
         carted_product.update(quantity: latest_quantity)
       end

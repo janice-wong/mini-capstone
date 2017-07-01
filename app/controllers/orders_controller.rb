@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
       confirmation_id: (('a'..'z').to_a.sample(5) + (0..9).to_a.sample(5)).shuffle.join("")
     )
     CartedProduct.where(user_id: current_user.id, status: "carted").each do |carted_product|
-      carted_product.update(status: "ordered")
+      carted_product.update(status: "ordered", order_id: order.id)
     end
     flash[:success] = "Order received. Order Confirmation Number ##{order.confirmation_id}"
     redirect_to '/'
