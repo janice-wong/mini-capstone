@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
     CartedProduct.where(user_id: current_user.id, status: "carted").each do |carted_product|
       carted_product.update(status: "ordered")
     end
-    flash[:success] = "Success! Order has been placed. Confirmation Number: #{order.confirmation_id}"
+    flash[:success] = "Order received. Order Confirmation Number ##{order.confirmation_id}"
     redirect_to '/'
   end
 end

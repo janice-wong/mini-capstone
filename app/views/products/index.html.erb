@@ -6,18 +6,20 @@
       <% if product.images.length > 0 %>
         <p><img src="<%= product.images[0].url %>"></p>
       <% end %>
-      <% if current_user.admin %>
-        <p><a href="/products/<%= product.id %>/edit" role="button" class="btn btn-warning btn-sm">Edit</a></p>
-      <% else %>
-        <%= form_tag "/add_to_cart", method: :post do %>
-          <select name="quantity">
-            <option value="" selected disabled>Please select</option>
-            <% (1..5).each do |value| %>
-              <option value="<%= value %>"><%= value %></option>
-            <% end %>
-          </select>
-          <input type="hidden" name="product_id" value="<%= product.id %>">
-          <input class="btn btn-sm btn-primary" type="submit" value="Add to Cart">
+      <% if current_user %>
+        <% if current_user.admin %>
+          <p><a href="/products/<%= product.id %>/edit" role="button" class="btn btn-warning btn-sm">Edit</a></p>
+        <% else %>
+          <%= form_tag "/add_to_cart", method: :post do %>
+            <select name="quantity">
+              <option value="" selected disabled>Please select</option>
+              <% (1..5).each do |value| %>
+                <option value="<%= value %>"><%= value %></option>
+              <% end %>
+            </select>
+            <input type="hidden" name="product_id" value="<%= product.id %>">
+            <input class="btn btn-sm btn-primary" type="submit" value="Add to Cart">
+          <% end %>
         <% end %>
       <% end %>
     </div>
