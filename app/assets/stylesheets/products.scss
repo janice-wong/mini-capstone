@@ -1,0 +1,29 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background-image: url('light_toast.png');
+  font-family: "Gill Sans","Gill Sans MT",Calibri,sans-serif
+}
+
+.margined {
+  margin: 15px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.well {
+  text-align: center;
+}
+
+.navbar-default {
+  background-color: transparent;
+ }
+
+.navbar-default .navbar-nav {
+  color: black;
+}

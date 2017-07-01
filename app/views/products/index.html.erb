@@ -1,0 +1,25 @@
+<% @products.each do |product| %>
+  <div class="col-md-3">
+    <div class="well">
+      <h4><a href="/products/<%= product.id %>"><%= product.name %></a></h4>
+      <p>$<%= product.price %></p>
+      <% if product.images.length > 0 %>
+        <p><img src="<%= product.images[0].url %>"></p>
+      <% end %>
+      <% if current_user.admin %>
+        <p><a href="/products/<%= product.id %>/edit" role="button" class="btn btn-warning btn-sm">Edit</a></p>
+      <% else %>
+        <%= form_tag "/add_to_cart", method: :post do %>
+          <select name="quantity">
+            <option value="" selected disabled>Please select</option>
+            <% (1..5).each do |value| %>
+              <option value="<%= value %>"><%= value %></option>
+            <% end %>
+          </select>
+          <input type="hidden" name="product_id" value="<%= product.id %>">
+          <input class="btn btn-sm btn-primary" type="submit" value="Add to Cart">
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

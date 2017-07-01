@@ -1,0 +1,58 @@
+<h2>My Cart</h2>
+<br>
+
+<%= form_tag "/update_cart", method: :patch do %>
+  <table class="table">
+    <thead>
+     <td>Name</td>
+     <td>Amount</td>
+     <td>Quantity</td> 
+     <td>Total Amount</td> 
+    </thead>
+    <tbody>
+      <% @carted_products.each do |carted_product| %>
+        <tr>
+          <input type="hidden" name="carted_product_ids[]" value="<%= carted_product.id %>">
+          <td><%= carted_product.product.name %></td>
+          <td><%= carted_product.product.price %></td>
+          <td>
+            <select name="quantities[]">
+              <% (0..5).each do |value| %>
+                <% if carted_product.quantity == value %>
+                  <option value="<%= value %>" selected><%= value %></option>
+                <% else %>
+                  <option value="<%= value %>"><%= value %></option>
+                <% end %>
+              <% end %>
+            </select>
+          </td>
+          <td><%= carted_product.total_cost %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <input class="btn btn-sm btn-primary" type="submit" value="Update">
+<% end %>
+<br>
+
+<div class="col-md-3">
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>Subtotal</td>
+        <td><%= "%05.2f" % order_subtotal %></td>
+      </tr>
+      <tr>
+        <td>Tax (8.875%)</td>
+        <td><%= "%05.2f" % order_tax %></td>
+      </tr>
+      <tr>
+        <td>Order Total</td>
+        <td><%= "%05.2f" % order_total %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<br>
+<p><%= link_to "Checkout", {:controller => 'orders', :action => 'new'}, {class: 'btn btn-sm btn-success'} %></p>

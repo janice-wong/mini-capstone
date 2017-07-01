@@ -1,0 +1,13 @@
+<div class="margined">
+  
+<%= form_tag "/products/#{@product.id}", method: :patch do %>
+  <p>Name: <input type="text" name="name" value="<%= @product.name %>"></p>
+  <p>Price: <input type="text" name="price" value="<%= @product.price %>"></p>
+  <p><button type="submit" class="btn btn-sm btn-primary">Submit</button></p>
+<% end %>
+
+<%= form_tag "/products/#{@product.id}", method: :delete do %>
+  <button type="delete" class="btn btn-sm btn-danger">Delete</button>
+<% end %>
+
+</div>

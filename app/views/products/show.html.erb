@@ -1,0 +1,14 @@
+<div class="margined">
+  
+<p>Name: <%= @product.name %></p>
+<p>Price: <%= @product.price %></p>
+
+<% @product.images.each do |image| %>
+  <div class="col-md-3">
+    <div class="well">
+      <img src="<%= image.url %>">
+    </div>
+  </div>
+<% end %>
+
+</div>

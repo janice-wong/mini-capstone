@@ -1,0 +1,48 @@
+<h2>Checkout</h2>
+<br>
+
+<%= form_tag "/order_confirmation", method: :post do %>
+  <table class="table">
+    <thead>
+     <td>Name</td>
+     <td>Amount</td>
+     <td>Quantity</td> 
+     <td>Total Amount</td> 
+    </thead>
+    <tbody>
+      <% @carted_products.each do |carted_product| %>
+        <tr>
+          <input type="hidden" name="carted_product_ids[]" value="<%= carted_product.id %>">
+          <td><%= carted_product.product.name %></td>
+          <td><%= carted_product.product.price %></td>
+          <td><%= carted_product.quantity %></td>
+          <td><%= carted_product.total_cost %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <div class="col-md-3">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>Subtotal</td>
+          <td><%= "%05.2f" % order_subtotal %></td>
+        </tr>
+        <tr>
+          <td>Tax (8.875%)</td>
+          <td><%= "%05.2f" % order_tax %></td>
+        </tr>
+        <tr>
+          <td>Order Total</td>
+          <td><%= "%05.2f" % order_total %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <br>
+  <br>
+  <input class="btn btn-sm btn-primary" type="submit" value="Complete Order">
+<% end %>
+
