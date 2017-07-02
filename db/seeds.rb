@@ -14,6 +14,7 @@ Product.create!([
 User.create!([
   {name: "Janice", email: "janice@janice", password_digest: "$2a$10$40x//ZyH1xUmD9SVILlke.p2qxnL4x5Xntema4nLzr1.ggvIARsfq", admin: nil},
   {name: "bob", email: "bob@gmail.com", password_digest: "$2a$10$1j9zyK8IbUGv1HOxDK630ur0odIIuhkn7X8PKH0JyimA8jWtBU.tO", admin: true}
+])
 
 Image.create!([
   {url: "http://s7d9.scene7.com/is/image/Aritzia/medium/s17_07_a01_50131_12696_on_b.jpg", product_id: Product.find_by(name: "Andrews Tee")},
