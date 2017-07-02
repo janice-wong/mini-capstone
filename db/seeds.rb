@@ -26,6 +26,6 @@ Image.create!([
   {url: "http://s7d9.scene7.com/is/image/Aritzia/large/s17_02_a01_58741_1274_on_c.jpg", product_id: Product.find_by(name: "Babaton Blouse").id},
   {url: "http://s7d9.scene7.com/is/image/Aritzia/large/s17_02_a01_58741_1274_on_a.jpg", product_id: Product.find_by(name: "Babaton Blouse").id},
   {url: "http://s7d9.scene7.com/is/image/Aritzia/medium/s17_07_a01_51878_12284_on_b.jpg", product_id: Product.find_by(name: "Talula Cami").id},
-  {url: "http://s7d9.scene7.com/is/image/Aritzia/medium/s17_01_a02_63294_11902_on_b.jpg", product_id: Product.find_by(name: "Babaton Blouse").id},
+  {url: "http://s7d9.scene7.com/is/image/Aritzia/medium/s17_01_a02_63294_11902_on_b.jpg", product_id: Product.find_by(name: "Wilfred Blouse").id},
   {url: "http://s7d9.scene7.com/is/image/Aritzia/medium/s17_04_a02_62958_13031_on_b.jpg", product_id: Product.find_by(name: "Winberg Tank").id}
 ])
